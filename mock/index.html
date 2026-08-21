@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trello風タスク管理アプリ(モック)</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="app-header">
+  <span class="app-header-icon" aria-hidden="true">📋</span>
+  <h1>Trello風タスク管理アプリ</h1>
+</header>
+
+<main id="board" class="board"></main>
+
+<div id="card-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button type="button" class="modal-close" id="modal-close-btn">✕</button>
+
+    <div class="field">
+      <label for="card-title-input">タイトル</label>
+      <input type="text" id="card-title-input" maxlength="30">
+      <span class="field-error" id="card-title-error"></span>
+    </div>
+
+    <div class="field">
+      <label for="card-desc-input">説明文</label>
+      <textarea id="card-desc-input" maxlength="1000" rows="5"></textarea>
+      <div class="field-meta">
+        <span class="char-count" id="card-desc-count">0/1000</span>
+        <span class="field-error" id="card-desc-error"></span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="card-due-input">期限日</label>
+      <input type="date" id="card-due-input">
+      <span class="field-error" id="card-due-error"></span>
+    </div>
+
+    <div class="field">
+      <label>優先度</label>
+      <div class="priority-options">
+        <label><input type="radio" name="priority" value="高"> 高</label>
+        <label><input type="radio" name="priority" value="中"> 中</label>
+        <label><input type="radio" name="priority" value="低"> 低</label>
+        <label><input type="radio" name="priority" value=""> 未設定</label>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-danger" id="card-delete-btn">削除</button>
+      <button type="button" class="btn btn-primary" id="card-save-btn">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/state.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/sort.js"></script>
+<script src="js/render.js"></script>
+<script src="js/dragdrop.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
