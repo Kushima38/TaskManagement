@@ -23,8 +23,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Getter
 @Setter
 @NoArgsConstructor
+//listテーブルを作成しているクラス
 public class TaskList {
 
+// IDを付与　UUIDでidの生成
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -35,14 +37,17 @@ public class TaskList {
     @Column(name = "position", nullable = false)
     private int order;
 
+// listテーブルに対してlistテーブル1　cardが多
     @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("order ASC")
     private java.util.List<Card> cards = new ArrayList<>();
 
+// creationTimeは作成日時から変更不可にしたいためupdateble = false
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+// こっちは更新のたびに変更するためupdatebleの記述なしデフォルトのtrue
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;

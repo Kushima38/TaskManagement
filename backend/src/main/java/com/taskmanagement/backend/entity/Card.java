@@ -24,12 +24,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Getter
 @Setter
 @NoArgsConstructor
+
+// cardテーブルの作成
 public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+// list_idを外部キーにしてtaskListと連携
+// tasklistが1 cardが多
     @ManyToOne(optional = false)
     @JoinColumn(name = "list_id", nullable = false)
     private TaskList list;
@@ -43,6 +47,7 @@ public class Card {
     @Column(name = "due_date")
     private LocalDate dueDate;
 
+// Priority.javaで定義されているenum
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
     private Priority priority;
