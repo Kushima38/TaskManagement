@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 public class TaskListService {
 
     private final TaskListRepository taskListRepository;
-
+// TaskListを取得し、TaskListResponseに変換する
+// つまりそのままのデータから表示用のデータに変換している
     public List<TaskListResponse> getAllLists() {
         return taskListRepository.findAllWithCardsOrdered().stream()
                 .map(TaskListResponse::from)

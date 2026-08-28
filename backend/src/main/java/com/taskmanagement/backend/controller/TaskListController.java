@@ -15,6 +15,8 @@ public class TaskListController {
 
     private final TaskListService taskListService;
 
+// エンドポイントGET/api/listsに接続したときの処理
+// 全件取得の表示
     @GetMapping
     public List<TaskListResponse> getAllLists() {
         return taskListService.getAllLists();
